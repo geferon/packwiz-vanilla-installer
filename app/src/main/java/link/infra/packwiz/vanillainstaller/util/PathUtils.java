@@ -1,4 +1,4 @@
-package link.infra.packwiz.vanillainstaller;
+package link.infra.packwiz.vanillainstaller.util;
 
 import net.fabricmc.installer.util.Utils;
 
@@ -37,7 +37,7 @@ public class PathUtils {
 		return getPackwizInstancesPath().resolve(slugify(packName));
 	}
 
-	private static String slugify(String packName) {
+	public static String slugify(String packName) {
 		return packName.toLowerCase(Locale.ROOT)
 			.replace(' ', '-')
 			.replaceAll("[\\x00-\\x1F\\x7F\"*/:<>?\\\\|\\[\\]]", "-")
