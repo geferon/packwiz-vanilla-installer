@@ -21,6 +21,7 @@ dependencies {
 	implementation("com.google.code.gson:gson:2.9.0")
 	implementation("commons-io:commons-io:2.11.0")
 	implementation("org.apache.commons:commons-lang3:3.12.0")
+	implementation("com.formdev:flatlaf:2.4")
 }
 
 application {

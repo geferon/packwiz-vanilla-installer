@@ -1,5 +1,6 @@
 package link.infra.packwiz.vanillainstaller;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import link.infra.packwiz.vanillainstaller.meta.*;
 import link.infra.packwiz.vanillainstaller.util.Debouncer;
 import link.infra.packwiz.vanillainstaller.util.PathUtils;
@@ -67,7 +68,7 @@ public class VanillaInstaller {
 	private JTextField launcherPathField;
 	private JProgressBar loadingBar;
 
-	private HashMap<String, JRadioButton> loaderRadioButtons = new HashMap<>();
+	private final HashMap<String, JRadioButton> loaderRadioButtons = new HashMap<>();
 	private JRadioButton radioButtonLoaderOther;
 
 	private final Debouncer urlDebouncer = new Debouncer(() -> {
@@ -77,7 +78,7 @@ public class VanillaInstaller {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
 			try {
-				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				UIManager.setLookAndFeel(new FlatLightLaf());
 				VanillaInstaller window = new VanillaInstaller();
 				window.mainFrame.setVisible(true);
 			} catch (Exception e) {
@@ -481,7 +482,7 @@ public class VanillaInstaller {
 					var button = (JRadioButton) e.getItem();
 					Class<LoaderMetadataGetter> loaderClass = (Class<LoaderMetadataGetter>) button.getClientProperty("MCLoaderClass");
 
-					if (loaderButton == null) return;
+					if (loaderClass == null) return;
 
 					// Clear MC versions and loader versions, disable em until they load again
 					minecraftVersionComboBox.removeAllItems();
